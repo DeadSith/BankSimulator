@@ -1,3 +1,7 @@
+*.db
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+
 *.gem
 *.rbc
 /.config
