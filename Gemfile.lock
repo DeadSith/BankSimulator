@@ -57,8 +57,11 @@ GEM
     fastercsv (1.5.5)
     json (1.8.6)
     json_pure (1.8.6)
+    microtest (0.2.1)
+      rubytest
     multi_json (1.12.1)
     public_suffix (2.0.5)
+    rubytest (0.8.1)
     stringex (1.5.1)
     uuidtools (2.1.5)
 
@@ -68,6 +71,7 @@ PLATFORMS
 DEPENDENCIES
   data_mapper
   dm-sqlite-adapter
+  microtest
 
 BUNDLED WITH
    1.13.7
