@@ -1,6 +1,6 @@
-require 'data_mapper'
 require_relative 'credit_card'
-class Transaction
+
+class CardTransaction
 	include DataMapper::Resource
 	property :id,   Serial
 	property :sum,  Float,  :required => true

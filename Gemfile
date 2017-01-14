@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 gem 'dm-sqlite-adapter'
 gem 'data_mapper'
-gem 'microtest'
+gem 'minitest'
+gem 'minitest-reporters'

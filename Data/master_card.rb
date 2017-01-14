@@ -1,5 +1,4 @@
 require_relative 'credit_card'
-require_relative 'transaction'
 
 class MasterCard < CreditCard
 	def to_s

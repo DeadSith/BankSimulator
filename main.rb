@@ -1,7 +1,7 @@
-require_relative 'Data/credit_card'
-require_relative 'Data/transaction'
+require_relative 'Data/visa'
+require_relative 'Data/master_card'
 
 DataMapper::Logger.new($stdout, :debug)
 DataMapper.setup(:default, 'sqlite://' + Dir.pwd + '/test.db')
 DataMapper.finalize
-DataMapper.auto_upgrade!
+DataMapper.auto_migrate!
