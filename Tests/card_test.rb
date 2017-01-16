@@ -2,22 +2,37 @@ require_relative 'test_helper'
 
 class CardTest < Minitest::Test
   def setup
-    #DataMapper::Logger.new($stdout, :debug)
     DataMapper.setup(:default, 'sqlite://' + Dir.pwd + '/test.db')
     DataMapper.finalize
     DataMapper.auto_migrate!
-    c1 = Visa.create(
-        :SHA1_card_number => "123",
+    Visa.create(
+        :card_number     => "1234 4321-1234_4321",
         :cardholder_name => "QWE",
-        :balance => 0.0,
-        :security_code => "4565"
+        :balance         => 0.0,
+        :security_code   => "4565"
     )
-    c2 = MasterCard.create(
-        :SHA1_card_number => "14523",
+    MasterCard.create(
+        :card_number     => "1452321167879002",
         :cardholder_name => "DFG",
-        :balance => 10.0,
-        :security_code => "hghg"
+        :balance         => 10.0,
+        :security_code   => "hghg"
     )
+  end
+  
+  def test_creation
+    visa = Visa.first
+    master = MasterCard.first
+    assert_equal(visa.card_number.length,64)&&
+        assert_equal(visa.security_code.length,64)&&
+        assert_equal(master.card_number.length,64)&&
+        assert_equal(master.security_code.length,64)
+  end
+  
+  def test_find_and_access
+    card = Visa.get_card_form_db('1234432112344321')
+    assert(card)&&
+        assert(card.check_access('4565'))&&
+        assert(!card.check_access('qew'))
   end
   
   def test_visa_card
